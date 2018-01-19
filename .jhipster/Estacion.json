@@ -1,0 +1,36 @@
+{
+    "fluentMethods": true,
+    "relationships": [
+        {
+            "relationshipName": "linea",
+            "otherEntityName": "linea",
+            "relationshipType": "many-to-one",
+            "otherEntityField": "id"
+        }
+    ],
+    "fields": [
+        {
+            "fieldName": "name",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "nemo",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "tipoEstacion",
+            "fieldType": "TipoEstacion",
+            "fieldValues": "CABECERA,NOCABECERA"
+        },
+        {
+            "fieldName": "via",
+            "fieldType": "Via",
+            "fieldValues": "UNO,DOS"
+        }
+    ],
+    "changelogDate": "20180119085812",
+    "entityTableName": "estacion",
+    "dto": "no",
+    "pagination": "infinite-scroll",
+    "service": "no"
+}

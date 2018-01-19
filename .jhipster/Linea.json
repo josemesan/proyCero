@@ -1,0 +1,31 @@
+{
+    "fluentMethods": true,
+    "relationships": [
+        {
+            "relationshipType": "one-to-one",
+            "relationshipName": "tablaTrenes",
+            "otherEntityName": "tablaTrenes",
+            "otherEntityField": "id",
+            "ownerSide": true,
+            "otherEntityRelationshipName": "linea"
+        },
+        {
+            "relationshipType": "one-to-many",
+            "relationshipName": "estacion",
+            "otherEntityName": "estacion",
+            "otherEntityRelationshipName": "linea"
+        }
+    ],
+    "fields": [
+        {
+            "fieldName": "nombreLinea",
+            "fieldType": "NombreLinea",
+            "fieldValues": "L2,L3,L4,L5,L7,L8,L9,L10,L11,L12,RAMAL"
+        }
+    ],
+    "changelogDate": "20180119085813",
+    "entityTableName": "linea",
+    "dto": "no",
+    "pagination": "pagination",
+    "service": "no"
+}

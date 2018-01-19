@@ -1,0 +1,68 @@
+<div>
+    <h2>
+        <span>Estacions</span>
+        <button class="btn btn-primary float-right jh-create-entity create-estacion" [routerLink]="['/', { outlets: { popup: ['estacion-new'] } }]">
+            <span class="fa fa-plus"></span>
+            <span >
+            Create new Estacion
+            </span>
+        </button>
+    </h2>
+    <jhi-alert></jhi-alert>
+    <div class="row">
+    </div>
+    <br/>
+    <div class="table-responsive" *ngIf="estacions">
+        <table class="table table-striped">
+            <thead>
+            <tr jhiSort [(predicate)]="predicate" [(ascending)]="reverse" [callback]="reset.bind(this)">
+            <th jhiSortBy="id"><span>ID</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="name"><span>Name</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="nemo"><span>Nemo</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="tipoEstacion"><span>Tipo Estacion</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="via"><span>Via</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="linea.id"><span>Linea</span> <span class="fa fa-sort"></span></th>
+            <th></th>
+            </tr>
+            </thead>
+            <tbody infinite-scroll (scrolled)="loadPage(page + 1)" [infiniteScrollDisabled]="page >= links['last']" [infiniteScrollDistance]="0">
+            <tr *ngFor="let estacion of estacions ;trackBy: trackId">
+                <td><a [routerLink]="['../estacion', estacion.id ]">{{estacion.id}}</a></td>
+                <td>{{estacion.name}}</td>
+                <td>{{estacion.nemo}}</td>
+                <td>{{estacion.tipoEstacion}}</td>
+                <td>{{estacion.via}}</td>
+                <td>
+                    <div *ngIf="estacion.linea">
+                        <a [routerLink]="['../linea', estacion.linea?.id ]" >{{estacion.linea?.id}}</a>
+                    </div>
+                </td>
+                <td class="text-right">
+                    <div class="btn-group flex-btn-group-container">
+                        <button type="submit"
+                                [routerLink]="['../estacion', estacion.id ]"
+                                class="btn btn-info btn-sm">
+                            <span class="fa fa-eye"></span>
+                            <span class="d-none d-md-inline">View</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/', { outlets: { popup: 'estacion/'+ estacion.id + '/edit'} }]"
+                                replaceUrl="true"
+                                class="btn btn-primary btn-sm">
+                            <span class="fa fa-pencil"></span>
+                            <span class="d-none d-md-inline">Edit</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/', { outlets: { popup: 'estacion/'+ estacion.id + '/delete'} }]"
+                                replaceUrl="true"
+                                class="btn btn-danger btn-sm">
+                            <span class="fa fa-remove"></span>
+                            <span class="d-none d-md-inline">Delete</span>
+                        </button>
+                    </div>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

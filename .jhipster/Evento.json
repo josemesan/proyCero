@@ -1,0 +1,45 @@
+{
+    "fluentMethods": true,
+    "relationships": [
+        {
+            "relationshipType": "one-to-one",
+            "relationshipName": "linea",
+            "otherEntityName": "linea",
+            "otherEntityField": "id",
+            "ownerSide": true,
+            "otherEntityRelationshipName": "evento"
+        },
+        {
+            "relationshipType": "one-to-one",
+            "relationshipName": "fecha",
+            "otherEntityName": "fecha",
+            "otherEntityField": "id",
+            "ownerSide": true,
+            "otherEntityRelationshipName": "evento"
+        },
+        {
+            "relationshipType": "one-to-one",
+            "relationshipName": "tren",
+            "otherEntityName": "tren",
+            "otherEntityField": "id",
+            "ownerSide": true,
+            "otherEntityRelationshipName": "evento"
+        }
+    ],
+    "fields": [
+        {
+            "fieldName": "nombre",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "tipoEvento",
+            "fieldType": "TipoEvento",
+            "fieldValues": "OCUPA,LIBERA"
+        }
+    ],
+    "changelogDate": "20180119085814",
+    "entityTableName": "evento",
+    "dto": "no",
+    "pagination": "no",
+    "service": "no"
+}

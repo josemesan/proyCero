@@ -1,0 +1,31 @@
+
+<div *ngIf="linea">
+    <h2><span>Linea</span> {{linea.id}}</h2>
+    <hr>
+    <jhi-alert-error></jhi-alert-error>
+    <dl class="row-md jh-entity-details">
+        <dt><span>Nombre Linea</span></dt>
+        <dd>
+            <span>{{linea.nombreLinea}}</span>
+        </dd>
+        <dt><span>Tabla Trenes</span></dt>
+        <dd>
+            <div *ngIf="linea.tablaTrenes">
+                <a [routerLink]="['/tabla-trenes', linea.tablaTrenes?.id]">{{linea.tablaTrenes?.id}}</a>
+            </div>
+        </dd>
+    </dl>
+
+    <button type="submit"
+            (click)="previousState()"
+            class="btn btn-info">
+        <span class="fa fa-arrow-left"></span>&nbsp;<span> Back</span>
+    </button>
+
+    <button type="button"
+            [routerLink]="['/', { outlets: { popup: 'linea/'+ linea.id + '/edit'} }]"
+            replaceUrl="true"
+            class="btn btn-primary">
+        <span class="fa fa-pencil"></span>&nbsp;<span> Edit</span>
+    </button>
+</div>

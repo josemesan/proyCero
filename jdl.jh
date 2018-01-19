@@ -1,0 +1,52 @@
+entity TablaTrenes {
+	numeroTrenes Integer
+}
+entity Estacion {
+	name String,
+    nemo String,
+    tipoEstacion TipoEstacion,
+    via Via
+}
+entity Linea {
+	nombreLinea NombreLinea
+}
+entity Evento {
+	nombre String,
+    tipoEvento TipoEvento
+}
+entity Fecha {
+	dia String,
+    hora String,
+    tipoDia TipoDia
+}
+entity Tren {
+	numero String,
+    viajeros String
+}
+enum Via {
+    UNO, DOS
+}
+enum TipoEstacion {
+    CABECERA, NOCABECERA
+}
+enum NombreLinea {
+    L2, L3, L4, L5, L7, L8, L9, L10 , L11, L12, RAMAL
+}
+enum TipoDia {
+    L, V, S, F, E
+}
+enum TipoEvento {
+    OCUPA, LIBERA
+}
+relationship OneToOne {
+	Evento{linea} to Linea,
+    Evento{fecha} to Fecha,
+    Evento{tren} to Tren,
+    Linea{tablaTrenes} to TablaTrenes
+}
+relationship OneToMany { 
+    Linea{estacion} to Estacion
+}
+
+paginate Estacion with infinite-scroll
+paginate Linea with pagination

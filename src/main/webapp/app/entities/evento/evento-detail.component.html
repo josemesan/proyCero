@@ -1,0 +1,47 @@
+
+<div *ngIf="evento">
+    <h2><span>Evento</span> {{evento.id}}</h2>
+    <hr>
+    <jhi-alert-error></jhi-alert-error>
+    <dl class="row-md jh-entity-details">
+        <dt><span>Nombre</span></dt>
+        <dd>
+            <span>{{evento.nombre}}</span>
+        </dd>
+        <dt><span>Tipo Evento</span></dt>
+        <dd>
+            <span>{{evento.tipoEvento}}</span>
+        </dd>
+        <dt><span>Linea</span></dt>
+        <dd>
+            <div *ngIf="evento.linea">
+                <a [routerLink]="['/linea', evento.linea?.id]">{{evento.linea?.id}}</a>
+            </div>
+        </dd>
+        <dt><span>Fecha</span></dt>
+        <dd>
+            <div *ngIf="evento.fecha">
+                <a [routerLink]="['/fecha', evento.fecha?.id]">{{evento.fecha?.id}}</a>
+            </div>
+        </dd>
+        <dt><span>Tren</span></dt>
+        <dd>
+            <div *ngIf="evento.tren">
+                <a [routerLink]="['/tren', evento.tren?.id]">{{evento.tren?.id}}</a>
+            </div>
+        </dd>
+    </dl>
+
+    <button type="submit"
+            (click)="previousState()"
+            class="btn btn-info">
+        <span class="fa fa-arrow-left"></span>&nbsp;<span> Back</span>
+    </button>
+
+    <button type="button"
+            [routerLink]="['/', { outlets: { popup: 'evento/'+ evento.id + '/edit'} }]"
+            replaceUrl="true"
+            class="btn btn-primary">
+        <span class="fa fa-pencil"></span>&nbsp;<span> Edit</span>
+    </button>
+</div>

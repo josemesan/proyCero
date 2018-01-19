@@ -1,0 +1,56 @@
+<div>
+    <h2>
+        <span>Tabla Trenes</span>
+        <button class="btn btn-primary float-right jh-create-entity create-tabla-trenes" [routerLink]="['/', { outlets: { popup: ['tabla-trenes-new'] } }]">
+            <span class="fa fa-plus"></span>
+            <span >
+            Create new Tabla Trenes
+            </span>
+        </button>
+    </h2>
+    <jhi-alert></jhi-alert>
+    <div class="row">
+    </div>
+    <br/>
+    <div class="table-responsive" *ngIf="tablaTrenes">
+        <table class="table table-striped">
+            <thead>
+            <tr>
+            <th><span>ID</span></th>
+            <th><span>Numero Trenes</span></th>
+            <th></th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr *ngFor="let tablaTrenes of tablaTrenes ;trackBy: trackId">
+                <td><a [routerLink]="['../tabla-trenes', tablaTrenes.id ]">{{tablaTrenes.id}}</a></td>
+                <td>{{tablaTrenes.numeroTrenes}}</td>
+                <td class="text-right">
+                    <div class="btn-group flex-btn-group-container">
+                        <button type="submit"
+                                [routerLink]="['../tabla-trenes', tablaTrenes.id ]"
+                                class="btn btn-info btn-sm">
+                            <span class="fa fa-eye"></span>
+                            <span class="d-none d-md-inline">View</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/', { outlets: { popup: 'tabla-trenes/'+ tablaTrenes.id + '/edit'} }]"
+                                replaceUrl="true"
+                                class="btn btn-primary btn-sm">
+                            <span class="fa fa-pencil"></span>
+                            <span class="d-none d-md-inline">Edit</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/', { outlets: { popup: 'tabla-trenes/'+ tablaTrenes.id + '/delete'} }]"
+                                replaceUrl="true"
+                                class="btn btn-danger btn-sm">
+                            <span class="fa fa-remove"></span>
+                            <span class="d-none d-md-inline">Delete</span>
+                        </button>
+                    </div>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
